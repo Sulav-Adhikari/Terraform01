@@ -33,8 +33,8 @@ resource "aws_s3_object" "object" {
     "svg"  = "image/svg+xml"
   }, element(split(".", basename(each.value)), length(split(".", basename(each.value))) - 1), "binary/octet-stream")
   
-  for_each = fileset("Terraform01/dist", "**/*")
+  for_each = fileset("/dist", "**/*")
 
-  source = "Terraform01/dist/${each.value}"
+  source = "/dist/${each.value}"
 }
 
